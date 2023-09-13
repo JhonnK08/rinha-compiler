@@ -1,0 +1,15 @@
+{
+	"name": "rinha-compiler",
+	"module": "index.js",
+	"scripts": {
+		"format": "prettier -uw . --config ./.prettierrc.json",
+		"lint": "bun run-eslint && bun format",
+		"run-eslint": "eslint . --ext js",
+		"start": "bun run index.js"
+	},
+	"type": "module",
+	"devDependencies": {
+		"eslint": "^8.49.0",
+		"prettier": "^3.0.3"
+	}
+}
