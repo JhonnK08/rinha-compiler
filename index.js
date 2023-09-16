@@ -1,5 +1,5 @@
 import Bun from 'bun';
-import interpreterExpressionByKind from './expressions';
+import interpreterExpressionByKind from './src/expressions';
 
 function interpreterRinha(node) {
 	if (node.expression) {
@@ -10,11 +10,7 @@ function interpreterRinha(node) {
 }
 
 async function main() {
-	const argsFileName = Bun.argv[3];
-	if (!argsFileName) {
-		throw new Error('Missing file parameter.\n\nExample: ``bun run start print.json``\n\n')
-	}
-	const path = `./files/${argsFileName}.json`;
+	const path = `./var/rinha/source.rinha.json`;
 	const file = Bun.file(path);
 	const contents = await file.json();
 
