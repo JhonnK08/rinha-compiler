@@ -10,9 +10,6 @@ RUN bun install
 
 # Copying source files
 COPY src ./src
-COPY var ./var
 COPY index.js ./
 
-RUN bun start
-
-CMD [ "bun", "index.js"]
+CMD ["sh", "-c", "bun start && bun script.js"]
