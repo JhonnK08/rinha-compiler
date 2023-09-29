@@ -41,7 +41,7 @@ export default function interpreterExpressionByKind(node, kind) {
             return executeCall(callName, callArguments);
         }
         case 'Var': {
-            const variableName = node.name.text;
+            const variableName = node.text;
             const variableValue = node.value ? interpreterExpressionByKind(node.value, node.value.kind) : undefined;
             return executeVar(variableName, variableValue);
         }
@@ -52,9 +52,9 @@ export default function interpreterExpressionByKind(node, kind) {
             return executeBinary(firstTerm, operator, secondTerm);
         }
         case 'Function': {
-            const parameters = node.parameters.text;
-            const scope = interpreterExpressionByKind(node.value, node.value.kind)
-            return executeFunction(parameters, scope)
+            const parameters = node.parameters.map((parameter) => parameter.text);
+            const scope = interpreterExpressionByKind(node.value, node.value.kind);
+            return executeFunction(parameters, scope);
         }
         case 'Let': {
             const variableName = node.name.text;
@@ -75,8 +75,8 @@ export default function interpreterExpressionByKind(node, kind) {
             return String(node.value);
         }
         case 'If': {
-            const { then, otherwise } = node.condition;
-            const conditionResponse = interpreterExpressionByKind(node.condition, node.condition.kind);
+            const { condition, then, otherwise } = node;
+            const conditionResponse = interpreterExpressionByKind(condition, condition.kind);
             const thenResponse = interpreterExpressionByKind(then, then.kind);
 
             let otherwiseResponse;
