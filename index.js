@@ -10,7 +10,7 @@ function interpreterRinha(node) {
 }
 
 async function main() {
-	const path = `/var/rinha/source.rinha.json`;
+	const path = `./var/rinha/source.rinha.json`;
 	const file = Bun.file(path);
 	const contents = await file.json();
 
