@@ -1,9 +1,9 @@
 export default function executeIfStatement(condition, then, otherwise) {
     const otherwiseString = otherwise ? ` else {
-        ${otherwise}
+        return ${otherwise}
     }` : ';'
 
     return ` if (${condition}) {
-        ${then}
+        return ${then}
     } ${otherwiseString}`
 }
