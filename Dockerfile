@@ -15,4 +15,4 @@ COPY index.js ./
 
 RUN bun start
 
-CMD [ "bun", "script.js"]
+CMD [ "bun", "index.js"]
