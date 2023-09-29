@@ -18,5 +18,5 @@ After that, execute `bun run start` to generate the script. Execute `bun script.
 
 ## Run in docker
 
--   Build the image with `docker build -t jhonn/rinha`
--   Run the project with `docker run -t jhonn/rinha`
+-   Build the image with `docker build -t jhonn/rinha .`
+-   Run the project with `docker run --mount type=bind,source=./var/rinha/source.rinha.json,target=/app/var/rinha/source.rinha.json --memory=2gb --cpus=2 jhonn/rinha`
